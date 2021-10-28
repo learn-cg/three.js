@@ -13,13 +13,8 @@
 	const material = new THREE.LineBasicMaterial( { color: 0xff0000 } );
 	const wire = new THREE.Line( geometry, material );
 	scene.add( wire );
-	const curve = new THREE.CatmullRomCurve3( [
-		new THREE.Vector3( -10, 0, 10 ),
-		new THREE.Vector3( -5, 5, 5 ),
-		new THREE.Vector3( 0, 0, 0 ),
-		new THREE.Vector3( 5, -5, 5 ),
-		new THREE.Vector3( 10, 0, 10 ) ] );
-		const points2 = curve.getPoints( 50 );
+	const curve = new THREE.EllipseCurve(0, 0, 3, 5, 0,  2 * Math.PI, false, 0);
+	const points2 = curve.getPoints( 50 );
 	const geometry2 = new THREE.BufferGeometry().setFromPoints(points2);
 	const material2 = new THREE.LineBasicMaterial( { color: 0x00ff00 } );
 	const wire2 = new THREE.Line( geometry2, material2 );
