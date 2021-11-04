@@ -1,7 +1,7 @@
 	const h_scr = window.innerWidth;
 	const v_scr = window.innerHeight; 
 	const scene = new THREE.Scene();
-	const camera = new THREE.PerspectiveCamera(75, h_scr/v_scr, 0.1, 1000);
+	const camera = new THREE.PerspectiveCamera(45, h_scr/v_scr, 0.1, 1000);
 	camera.position.z = 5;
 
 	const renderer = new THREE.WebGLRenderer({canvas: HelloCanvas}); 
@@ -13,10 +13,9 @@
 	const material = new THREE.LineBasicMaterial( { color: 0xff0000 } );
 	const wire = new THREE.Line( geometry, material );
 	scene.add( wire );
-	//const curve = new THREE.CubicBezierCurve3( 
-	//	new THREE.Vector3( 0,0,0 ), new THREE.Vector3( -2,-2,3 ),
-	//	new THREE.Vector3( 3,2,-2 ),new THREE.Vector3(1,1,1 ) ); 
-	const curve = new THREE.EllipseCurve(0, 0, 2, 3, 0,  2 * Math.PI, false, 0);
+	const curve = new THREE.CubicBezierCurve3( 
+	new THREE.Vector3( 0,0,0 ), new THREE.Vector3( -2,-2,3 ),
+	new THREE.Vector3( 3,2,-2 ),new THREE.Vector3(1,1,1 ) ); 
     const points2 = curve.getPoints( 50 );
 	const geometry2 = new THREE.BufferGeometry().setFromPoints(points2);
 	const material2 = new THREE.LineBasicMaterial( { color: 0x00ff00 } );

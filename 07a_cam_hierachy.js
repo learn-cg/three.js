@@ -1,8 +1,8 @@
 const h_scr = window.innerWidth;
 const v_scr = window.innerHeight; 
 const scene = new THREE.Scene();
-//const camera = new THREE.PerspectiveCamera(75, h_scr/v_scr, 0.1, 1000);
-const camera = new THREE.OrthographicCamera(-4, 4, 4*h_scr/v_scr, -4*h_scr/v_scr, 0.1, 100);
+const camera = new THREE.PerspectiveCamera(45, h_scr/v_scr, 0.1, 1000);
+// const camera = new THREE.OrthographicCamera(-2, 2, 2*h_scr/v_scr, -2*h_scr/v_scr, 0.1, 100);
 camera.position.z = 5;
 
 const renderer = new THREE.WebGLRenderer({canvas: HelloCanvas}); 
