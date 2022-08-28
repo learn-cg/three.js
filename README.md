@@ -17,9 +17,13 @@
 
 이 튜토리얼의 내용은 수시로 변경됩니다.
 
-## 튜토리얼 목차
-* [00_hello_box](00_hello_box.html)
+* 튜토리얼 웹 페이지에서 직접 보려면 - https://learn-cg.github.io/three.js/ 
 
+## 튜토리얼 목차
+
+* [00_hello_box](00_hello_box.html) - box를 한번 그리는 가장 단순한 프로그램
+* [01_rotate_box](01_rotate_box.html) - box를 반복해서 그리면서 회전 시키는 프로그램
+* [02_other_geometry](02_other_geometry.html) - 박스가 아닌 다른 모양을 사용하는 예제 
 
 ## 저작권 
 (c) 2021 이환용, 생능출판사
