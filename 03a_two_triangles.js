@@ -7,17 +7,27 @@
 	const renderer = new THREE.WebGLRenderer({canvas: HelloCanvas}); 
 	renderer.setSize( h_scr, v_scr ); 
 
-	const points = [ new THREE.Vector3(0,0,1), new THREE.Vector3(0,0,0), 
-		new THREE.Vector3(1,0,0), new THREE.Vector3(0,0,0), new THREE.Vector3(0,1,0) ]; 
-	const geometry = new THREE.BufferGeometry().setFromPoints(points);
-	const material = new THREE.LineBasicMaterial( { color: 0xff0000 } );
-	const wire = new THREE.Line( geometry, material );
-	scene.add( wire );
+	const geometry = new THREE.BufferGeometry();
+	const vertices = new Float32Array( [
+		-1.0, -1.0,  1.0,
+		 1.0, -1.0,  1.0,
+		 1.0,  1.0,  1.0,
+
+		 1.0,  1.0,  1.0,
+		-1.0,  1.0,  1.0,
+		-1.0, -1.0,  1.0
+	] );
+
+	// itemSize = 3 because there are 3 values (components) per vertex
+	geometry.setAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
+	const material = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+	const mesh = new THREE.Mesh( geometry, material );
+	scene.add( mesh );
 
 	const animate = function () {
 		requestAnimationFrame( animate );
-		wire.rotation.x += 0.01;
-		wire.rotation.y += 0.01;
+		mesh.rotation.x += 0.01;
+		mesh.rotation.y += 0.01;
 		renderer.render( scene, camera );
 	};
 	animate();
