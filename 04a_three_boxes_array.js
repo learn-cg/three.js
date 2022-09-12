@@ -7,7 +7,8 @@
 	const renderer = new THREE.WebGLRenderer({canvas: HelloCanvas}); 
 	renderer.setSize( h_scr, v_scr ); 
 
-	const geometry = new THREE.BoxGeometry();
+	// const geometry = new THREE.BoxGeometry();
+	const geometries = [ new THREE.BoxGeometry(), new THREE.ConeGeometry(), new THREE.SphereGeometry(), ]; 
 	function makeInstance(geometry, col, pos_x) {
 		const material = new THREE.MeshBasicMaterial( { color: col }); 
 		const box = new THREE.Mesh( geometry, material );
@@ -16,11 +17,11 @@
 		return box; 
 	}
 	const boxes = [
-		makeInstance(geometry, 0xff0000,  0),
-		makeInstance(geometry, 0x00ff00, -2),
-		makeInstance(geometry, 0x0000ff,  2),
+		makeInstance(geometries[0], 0xff0000,  0),
+		makeInstance(geometries[1], 0x00ff00, -2),
+		makeInstance(geometries[2], 0x0000ff,  2),
 	];
-	scene.add( boxes ); 
+	//scene.add( boxes ); 
 
 	const animate = function () {
 		requestAnimationFrame( animate );
