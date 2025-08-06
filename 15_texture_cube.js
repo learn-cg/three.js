@@ -33,6 +33,28 @@
 	scene.add(box2); 
 	scene.add(box3); 
 
+	const exporter = new GLTFExporter();
+
+	try {
+  		exporter.parse(
+    scene,
+    function (result) {
+      if (result instanceof ArrayBuffer) {
+        const blob = new Blob([result], { type: 'application/octet-stream' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'scene.glb';
+        link.click();
+      } else {
+        console.error('Unexpected export result format.');
+      }
+    },
+    { binary: true }
+  	);
+	} catch (error) {
+  	console.error('Export failed:', error);
+	}
+
 	const ambient = new THREE.AmbientLight( 0xffffff );
 	scene.add( ambient );
 	pointLight = new THREE.PointLight( 0xffffff, 2 );
