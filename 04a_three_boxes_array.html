@@ -3,10 +3,53 @@
 		<meta charset="utf-8">
 		<title>Rotating Three Boxes with with Array </title>
 		<style>body { margin: 0; }</style>
+		<script type="importmap">
+		{
+  			"imports": {
+    		"three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    		"three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  			}
+		}
+		</script>
 	</head>
 	<body>
-		<script src="js/three.js"></script>
 		<canvas id="HelloCanvas"></canvas>
-		<script src="04a_three_boxes_array.js"></script>	
+		<script type="module">
+    		import * as THREE from 'three';
+			const h_scr = window.innerWidth;
+			const v_scr = window.innerHeight; 
+			const scene = new THREE.Scene();
+			const camera = new THREE.PerspectiveCamera(45, h_scr/v_scr, 0.1, 1000);
+			camera.position.z = 5;
+
+			const renderer = new THREE.WebGLRenderer({canvas: HelloCanvas}); 
+			renderer.setSize( h_scr, v_scr ); 
+
+			// const geometry = new THREE.BoxGeometry();
+			const geometries = [ new THREE.BoxGeometry(), new THREE.ConeGeometry(), new THREE.SphereGeometry(), ]; 
+			function makeInstance(geometry, col, pos_x) {
+				const material = new THREE.MeshBasicMaterial( { color: col }); 
+				const box = new THREE.Mesh( geometry, material );
+				box.position.x = pos_x; 
+				scene.add( box ); 
+				return box; 
+			}
+			const boxes = [
+				makeInstance(geometries[0], 0xff0000,  0),
+				makeInstance(geometries[1], 0x00ff00, -2),
+				makeInstance(geometries[2], 0x0000ff,  2),
+			];
+			//scene.add( boxes ); 
+
+			const animate = function () {
+				requestAnimationFrame( animate );
+				boxes.forEach((box, i) => {
+						box.rotation.x += 0.01*(i+1); 
+						box.rotation.y += 0.01*(i+1); 
+				}); 
+				renderer.render( scene, camera );
+			};
+			animate();
+		</script>
 	</body>
 </html>
