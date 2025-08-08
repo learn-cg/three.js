@@ -44,7 +44,7 @@
 * [13_lights_on.html           ](13_lights_on.html           ) - 조명 장치
 * [14_texture.html             ](14_texture.html             ) - 텍스처
 * [14a_texture_bump.html       ](14a_texture_bump.html       ) - 범프 매핑
-* [14b_texture_normal_glTF_export.html](114b_texture_normal_glTF_export.html) - 범프 매핑
+* [14b_texture_normal_glTF_export.html](14b_texture_normal_glTF_export.html) - 범프 매핑
   * 스페이스바를 누르면 glTF 파일로 현재의 장면을 저장할 수 있습니다. 
   * glTF에서는 bump맵을 지원하지 않고, normal map을 지원하기 때문에 이미지를 normal map으로 변경하였습니다. [NormalMap-Online](https://cpetry.github.io/NormalMap-Online/)
   * 코딩은 Google Gemini 2.5 Pro의 도움을 받았습니다.
